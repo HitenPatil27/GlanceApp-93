@@ -8,7 +8,7 @@ An intelligent, mobile-ready cloud briefings platform built for multi-region Saa
 
 ---
 
-## ⚖️ Note for Judges & Evaluators: How to Add & Ingest Events
+## Note for Judges & Evaluators: How to Add & Ingest Events
 
 Judges can test the multi-stream ingestion, 4-factor ranking, and Gen AI briefings in **3 different ways**:
 
