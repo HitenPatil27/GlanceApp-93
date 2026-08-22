@@ -12,20 +12,20 @@ An intelligent, mobile-ready cloud briefings platform built for multi-region Saa
 
 Judges can test the multi-stream ingestion, 4-factor ranking, and Gen AI briefings in **3 different ways**:
 
-### 1. 🖱️ One-Click Ingestion via UI (Easiest & Recommended)
+### 1. One-Click Ingestion via UI (Easiest & Recommended)
 1. Open the [Live Demo](https://glance-app-93-one.vercel.app/).
 2. Click the blue **"Simulate Streams"** button in the top-right navbar (or click **"🚀 Ingest Demo Stream"** in the center).
 3. Select stream source:
-   - **🌟 All 3 Sources (Mixed)** — Mix of infrastructure, deploy, and error streams.
-   - **🖥️ Infra Monitor** — CPU, Memory, Disk, and Network latency spikes.
-   - **🌿 Deploy Pipeline** — CI/CD deployments, rollbacks, and failures.
-   - **🚨 Error Tracker** — 5xx errors, timeouts, and exceptions.
+   - **All 3 Sources (Mixed)** — Mix of infrastructure, deploy, and error streams.
+   - **Infra Monitor** — CPU, Memory, Disk, and Network latency spikes.
+   - **Deploy Pipeline** — CI/CD deployments, rollbacks, and failures.
+   - **Error Tracker** — 5xx errors, timeouts, and exceptions.
 4. Choose batch size (**15, 30, or 50 events**) and click **"Send Events"**.
 5. The dashboard will instantly populate with ranked incident cards, AI root-cause briefings, and live score breakdown bars.
 
 ---
 
-### 2. 🔌 Ingest Custom Events via REST API (cURL / Postman / Swagger)
+### 2. Ingest Custom Events via REST API (cURL / Postman / Swagger)
 You can POST your own custom JSON event payload directly to the live API endpoint:
 
 ```bash
@@ -64,7 +64,7 @@ curl -X POST https://glance-app-93-one.vercel.app/api/events/ingest \
 
 ---
 
-### 3. 📡 Automated Continuous Streaming via CLI Simulator
+### 3. Automated Continuous Streaming via CLI Simulator
 To simulate high-volume real-time cloud traffic over time:
 
 ```bash
@@ -74,13 +74,13 @@ python -m simulator.stream_sender --rounds 3 --batch-size 15 --interval 2.0
 
 ---
 
-### 🧹 How to Reset State for a Fresh Evaluation
+### How to Reset State for a Fresh Evaluation
 To clear all stored events, reset audit logs, and test from a clean slate:
 - **Via UI**: Click **"Simulate Streams"** in the header ➔ Click the red **"Reset"** button.
 - **Via API**: Send a POST request to `/api/events/reset`.
 
 
-## 👥 Team & Skill Ownership
+## Team & Skill Ownership
 
 | Contributor | Domain & Responsibilities | Key Deliverables |
 |---|---|---|
@@ -90,27 +90,27 @@ To clear all stored events, reset audit logs, and test from a clean slate:
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 - **📡 Multi-Stream Ingestion**: Ingests JSON event streams across 3 realistic sources over HTTP:
   1. `infra-monitor`: CPU, Memory, Disk, Network latency spikes across multi-region hosts
   2. `deploy-pipeline`: Service releases, rollbacks, and failed CI/CD pipeline deployments
   3. `error-tracker`: 5xx errors, HTTP 502/503 bursts, exceptions, and database deadlocks
-- **⚖️ 4-Factor Weighted Ranking Model**:
+- **4-Factor Weighted Ranking Model**:
   $$\text{Score} = (w_1 \times \text{Severity}) + (w_2 \times \text{Recency}) + (w_3 \times \text{Frequency}) + (w_4 \times \text{Blast Radius})$$
   - **Severity ($w_1=0.35$)**: Critical (1.0), High (0.75), Medium (0.50), Low (0.25)
   - **Recency ($w_2=0.25$)**: Exponential decay $\text{Score}_{\text{rec}} = e^{-\lambda \cdot \Delta t}$ with $\lambda = 0.05/\text{min}$
   - **Frequency ($w_3=0.20$)**: Rolling 5-minute alert burst detection
   - **Blast Radius ($w_4=0.20$)**: Multi-service and cross-region cascade footprint
-- **🧠 Gen AI Incident Briefings**: Uses Hugging Face Inference API (`Qwen/Qwen2.5-72B-Instruct`) with SRE-tailored prompt engineering, MD5 caching, and an automated rule-based template fallback for 100% uptime.
-- **🎛️ Operator Feedback Loop (PRD Bonus Feature)**: Dynamic weight tuner with live normalization ($\sum w_i = 1.0$), strategy presets, and instant sub-50ms system-wide re-ranking (`POST /api/feedback`).
-- **📋 Processing Audit Trail**: Append-only log recording every lifecycle event (`ingested`, `scored`, `explained`, `served`, `weights_updated`, `rescored`, `reset`).
-- **📱 Mobile-First React SPA**: Responsive dark-mode dashboard with thumb navigation, live search, multi-source filters, and detailed score inspection modals.
-- **☁️ Cloud & Container Ready**: Multi-stage Dockerfile, Docker Compose, Procfile, and Render.yaml blueprints.
+- **Gen AI Incident Briefings**: Uses Hugging Face Inference API (`Qwen/Qwen2.5-72B-Instruct`) with SRE-tailored prompt engineering, MD5 caching, and an automated rule-based template fallback for 100% uptime.
+- **Operator Feedback Loop (PRD Bonus Feature)**: Dynamic weight tuner with live normalization ($\sum w_i = 1.0$), strategy presets, and instant sub-50ms system-wide re-ranking (`POST /api/feedback`).
+- **Processing Audit Trail**: Append-only log recording every lifecycle event (`ingested`, `scored`, `explained`, `served`, `weights_updated`, `rescored`, `reset`).
+- **Mobile-First React SPA**: Responsive dark-mode dashboard with thumb navigation, live search, multi-source filters, and detailed score inspection modals.
+- **Cloud & Container Ready**: Multi-stage Dockerfile, Docker Compose, Procfile, and Render.yaml blueprints.
 
 ---
 
-## 🏛️ System Architecture
+## System Architecture
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -132,7 +132,7 @@ To clear all stored events, reset audit logs, and test from a clean slate:
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 ### Option 1: Unified Server (FastAPI + Built React SPA on Port 8000)
 
@@ -174,7 +174,7 @@ Open **[http://localhost:5173](http://localhost:5173)** in your browser.
 
 ---
 
-## 🧪 Ingesting Simulated Events
+## Ingesting Simulated Events
 
 ### Via UI:
 Click the **"Simulate Streams"** button in the header (or **"🚀 Ingest Demo Stream"**) and pick a stream source and batch size.
@@ -187,7 +187,7 @@ python -m simulator.stream_sender --rounds 3 --batch-size 15 --interval 2.0
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -206,7 +206,7 @@ Interactive Swagger documentation is available at **[http://localhost:8000/docs]
 
 ---
 
-## 🛡️ Testing & Verification
+## Testing & Verification
 
 Run the full automated test suite:
 ```bash
@@ -216,7 +216,7 @@ All **28 smoke and integration tests** validate end-to-end functionality, sub-5-
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ├── app/
