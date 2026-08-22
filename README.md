@@ -4,10 +4,8 @@ An intelligent, mobile-ready cloud briefings platform built for multi-region Saa
 
 ---
 
-> **🔴 LIVE DEMO:** [GlanceApp 93 Live on Render](https://glanceapp-93.onrender.com)
-> *(Note: The initial load may take 30-50 seconds if the free cloud instance is waking up from a cold start).*
- 
----
+> **🚀 LIVE DEMO:** [https://glance-app-93-one.vercel.app/](https://glance-app-93-one.vercel.app/)
+
 
 ## 👥 Team & Skill Ownership
 
