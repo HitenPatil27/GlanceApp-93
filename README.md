@@ -6,6 +6,79 @@ An intelligent, mobile-ready cloud briefings platform built for multi-region Saa
 
 > **🚀 LIVE DEMO:** [https://glance-app-93-one.vercel.app/](https://glance-app-93-one.vercel.app/)
 
+---
+
+## ⚖️ Note for Judges & Evaluators: How to Add & Ingest Events
+
+Judges can test the multi-stream ingestion, 4-factor ranking, and Gen AI briefings in **3 different ways**:
+
+### 1. 🖱️ One-Click Ingestion via UI (Easiest & Recommended)
+1. Open the [Live Demo](https://glance-app-93-one.vercel.app/).
+2. Click the blue **"Simulate Streams"** button in the top-right navbar (or click **"🚀 Ingest Demo Stream"** in the center).
+3. Select stream source:
+   - **🌟 All 3 Sources (Mixed)** — Mix of infrastructure, deploy, and error streams.
+   - **🖥️ Infra Monitor** — CPU, Memory, Disk, and Network latency spikes.
+   - **🌿 Deploy Pipeline** — CI/CD deployments, rollbacks, and failures.
+   - **🚨 Error Tracker** — 5xx errors, timeouts, and exceptions.
+4. Choose batch size (**15, 30, or 50 events**) and click **"Send Events"**.
+5. The dashboard will instantly populate with ranked incident cards, AI root-cause briefings, and live score breakdown bars.
+
+---
+
+### 2. 🔌 Ingest Custom Events via REST API (cURL / Postman / Swagger)
+You can POST your own custom JSON event payload directly to the live API endpoint:
+
+```bash
+curl -X POST https://glance-app-93-one.vercel.app/api/events/ingest \
+  -H "Content-Type: application/json" \
+  -d '{
+    "events": [
+      {
+        "source": "infra-monitor",
+        "title": "CPU spike at 96.4% on payment-service (us-east-1)",
+        "severity": "critical",
+        "region": "us-east-1",
+        "service": "payment-service",
+        "metadata": { "metric": "cpu", "value_percent": 96.4 }
+      },
+      {
+        "source": "deploy-pipeline",
+        "title": "Deploy v2.14.0 of auth-service — failed",
+        "severity": "high",
+        "region": "eu-west-1",
+        "service": "auth-service",
+        "metadata": { "version": "v2.14.0", "status": "failed" }
+      },
+      {
+        "source": "error-tracker",
+        "title": "HTTP 502 Bad Gateway on api-gateway (/api/checkout)",
+        "severity": "critical",
+        "region": "us-east-1",
+        "service": "api-gateway",
+        "metadata": { "error_type": "HTTP 502", "count": 312 }
+      }
+    ]
+  }'
+```
+*Interactive Swagger API documentation is also available at [http://localhost:8000/docs](http://localhost:8000/docs) when running locally.*
+
+---
+
+### 3. 📡 Automated Continuous Streaming via CLI Simulator
+To simulate high-volume real-time cloud traffic over time:
+
+```bash
+# Ingest 3 batches of 15 events each with a 2-second interval
+python -m simulator.stream_sender --rounds 3 --batch-size 15 --interval 2.0
+```
+
+---
+
+### 🧹 How to Reset State for a Fresh Evaluation
+To clear all stored events, reset audit logs, and test from a clean slate:
+- **Via UI**: Click **"Simulate Streams"** in the header ➔ Click the red **"Reset"** button.
+- **Via API**: Send a POST request to `/api/events/reset`.
+
 
 ## 👥 Team & Skill Ownership
 
